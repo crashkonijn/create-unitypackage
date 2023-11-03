@@ -1,6 +1,6 @@
 import { getInput, info } from '@actions/core';
-import create from 'unitypackage';
 import { readFile } from 'node:fs/promises';
+import createUnityPackage from './unitypackage.js';
 
 const IsNotNullOrWhiteSpace = (value: string) => value && value.trim();
 
@@ -16,7 +16,7 @@ const Run = async () => {
     const includeFilesPath = getInput("include-files", { required: true });
     const data = await readFile(includeFilesPath, { encoding: "utf-8" });
     const metaFiles = Split(data);
-    await create(metaFiles, projectFolder, output, info);
+    await createUnityPackage(metaFiles, projectFolder, output, info);
 };
 
 await Run();

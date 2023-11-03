@@ -19,11 +19,12 @@
   },
   "homepage": "https://github.com/pCYSl5EDgo/create-unitypackage#readme",
   "devDependencies": {
+    "@types/js-yaml": "^4.0.8",
     "@types/node": "^16.0.0",
     "typescript": "^4.8.0"
   },
   "dependencies": {
     "@actions/core": "^1.9.1",
-    "unitypackage": "^1.0.7"
+    "js-yaml": "^4.1.0"
   }
 }
