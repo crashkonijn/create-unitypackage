@@ -40,6 +40,10 @@ export var InternalImplementation;
         }
         ;
         exec('tar -cf "' + archtemp + '" -C "' + folderContainsMetaFolders + '" .', (err, stdout, stderr) => {
+            if (logger) {
+                logger('archtemp: ' + archtemp);
+                logger('folderContainsMetaFolders: ' + folderContainsMetaFolders);
+            }
             if (err) {
                 if (logger) {
                     logger('stdout : ' + stdout);
@@ -49,9 +53,15 @@ export var InternalImplementation;
             }
             const sevenZipPath = '"C:\\Program Files\\7-Zip\\7z.exe"';
             if (existsSync(sevenZipPath)) {
+                if (logger) {
+                    logger('windows!');
+                }
                 exec(sevenZipPath + ' a -tgzip "' + archtemp + '.gz" "' + archtemp + '"', totalEnd);
             }
             else {
+                if (logger) {
+                    logger('linux!');
+                }
                 exec('gzip -f "' + archtemp + '"', totalEnd);
             }
         });
