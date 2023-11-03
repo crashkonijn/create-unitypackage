@@ -39,7 +39,7 @@ export var InternalImplementation;
             }
         }
         ;
-        exec('tar -cf "' + archtemp + '" -C "' + folderContainsMetaFolders + '" .', (err, stdout, stderr) => {
+        exec('tar -cf "' + archtemp + '" -C "' + folderContainsMetaFolders + '"  --transform s,^./,, *', (err, stdout, stderr) => {
             if (logger) {
                 logger('archtemp: ' + archtemp);
                 logger('folderContainsMetaFolders: ' + folderContainsMetaFolders);
